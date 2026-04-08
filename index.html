@@ -774,7 +774,10 @@
 
 <script>
   // ── CONFIG ──────────────────────────────────────────────────────────────
-  const WEBHOOK_URL = 'https://SEU-WEBHOOK-AQUI';
+  const WEBHOOK_URL = 'https://swiftprawn-n8n.cloudfy.live/webhook/pansley/nps-form';
+
+  // ── TELEFONE (passado via ?tel= no link do WhatsApp) ────────────────────
+  const telefone = new URLSearchParams(window.location.search).get('tel') || '';
 
   // ── ESTADO ──────────────────────────────────────────────────────────────
   const state = {
@@ -878,6 +881,7 @@
         tempo_preparo: (document.getElementById('comment_text_tempo_preparo')|| {}).value || '',
         area_kids:     (document.getElementById('comment_text_area_kids')    || {}).value || ''
       },
+      telefone:   telefone,
       enviado_em: new Date().toISOString()
     };
     btnEl.classList.add('loading');
